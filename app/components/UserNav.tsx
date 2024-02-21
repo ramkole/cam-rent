@@ -2,6 +2,7 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import dUser from "@/public/dUser.png";
@@ -13,6 +14,7 @@ import {
   LogoutLink,
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Link from "next/link";
 
 const UserNav = async () => {
   const { getUser } = getKindeServerSession();
@@ -32,6 +34,25 @@ const UserNav = async () => {
       <DropdownMenuContent align="end" className="w-[200px]">
         {user ? (
           <>
+            <DropdownMenuItem>
+              <form className="w-full">
+                <button className="w-full" type="submit">
+                  Your CamRent
+                </button>
+              </form>
+            </DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href="/my-rentals">My Rentals</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href="/favorites">My Favorites</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>
+              <Link href="/bookings">My Booking</Link>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
             <DropdownMenuItem>
               <LogoutLink className="w-full">LogOut</LogoutLink>
             </DropdownMenuItem>
