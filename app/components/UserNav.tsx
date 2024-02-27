@@ -15,10 +15,15 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
+import { createRentalItem } from "../actions";
 
 const UserNav = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+  const createMyrenatlId = createRentalItem.bind(null, {
+    userId: user?.id as string,
+  });
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -35,9 +40,9 @@ const UserNav = async () => {
         {user ? (
           <>
             <DropdownMenuItem>
-              <form className="w-full">
-                <button className="w-full" type="submit">
-                  Your CamRent
+              <form className="w-full" action={createMyrenatlId}>
+                <button className="w-full flex font-semibold" type="submit">
+                  Your Rentals
                 </button>
               </form>
             </DropdownMenuItem>
