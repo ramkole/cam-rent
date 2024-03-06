@@ -4,8 +4,6 @@ import { MdCameraRoll } from "react-icons/md";
 import { BiSolidCameraMovie } from "react-icons/bi";
 import { PiBatteryHighBold } from "react-icons/pi";
 
-type ComponentArray = React.FunctionComponentElement<any>[];
-
 export const CategoryData = [
   {
     id: 1,

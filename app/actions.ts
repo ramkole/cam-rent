@@ -20,5 +20,24 @@ export async function createRentalItem ({userId}:{userId: string}){
             }
         })
         return redirect(`/create/${data.id}/struct`)
+    } else if(!data.addCategory && !data.addLocation && data.addDesc){
+        return redirect(`/create/${data.id}/struct`)
+    } else if(data.addCategory && !data.description ){
+        return redirect(`/create/${data.id}/description`)
     }
+}
+
+
+export async function createRentalPage(formData: FormData){
+    const categoryItemName = formData.get('categoryItemName')
+    const rentalId = formData.get('rentalId')
+    const data = await prisma.myRental.update({
+        where: {
+            id: rentalId
+        },
+        data: {
+            categoryName: categoryItemName,
+            addCategory: true
+        }
+    })
 }

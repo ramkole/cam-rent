@@ -28,12 +28,13 @@ const UserNav = async () => {
     <DropdownMenu>
       <DropdownMenuTrigger>
         <div className="rounded-full border px-2 py-2 lg:px-4 lg:py-2 flex items-center gap-x-3">
-          <DropdownMenuIcon className="w-6 h-6 lg:w-5 lg:h-5" />
           <Image
             src={user?.picture ? dUser : dUser}
             className="rounded-full h-8 w-8 hidden lg:block"
             alt="deafult user img"
           />
+          {user?.given_name}
+          <DropdownMenuIcon className="w-6 h-6 lg:w-5 lg:h-5" />
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[200px]">
