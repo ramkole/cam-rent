@@ -15,7 +15,6 @@ export async function GET() {
             id: user.id
         }
     })
-console.log('I am here',dbUser);
 
     if(!dbUser) {
         dbUser = await prisma?.user.create({
